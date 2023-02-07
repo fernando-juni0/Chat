@@ -4,7 +4,6 @@ const fs = require('fs');
 const bodyParser = require('body-parser');
 const session = require('express-session')
 const path = require('path');
-const nodemailer = require('nodemailer')
 
 
 //------------Configs--------------
@@ -39,12 +38,18 @@ app.set('view engine', 'ejs');
 //----------------POST--------------------
 
 
-
 //-----------------GET--------------------
 
+app.get('/',(req,res)=>{
+    res.render('index')
+})
+
+const models = require('./DataBase/models.js')
 
 
-
+models.findOne({colecao:"users",where:{displayName:'Fernando Junio1',email:'fernando132sj@gmail.com'}}).then((res)=>{
+    console.log(res);
+})
 
 
 //----------------SERVER-------------------
